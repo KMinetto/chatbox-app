@@ -22,7 +22,7 @@ class Connexion extends Component {
         const userState = this.state
 
         if (userState.goToChat) {
-            return <Redirect to={`/pseudo/${userState.pseudo}`} />
+            return <Redirect push to={`/pseudo/${userState.pseudo}`} />
         }
 
         return (
