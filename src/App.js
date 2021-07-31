@@ -3,6 +3,7 @@ import './App.css';
 
 import Formulaire from "./components/Formulaire";
 import Message from "./components/Message";
+import './App.css'
 
 class App extends Component {
     state = {
@@ -17,13 +18,24 @@ class App extends Component {
     }
 
   render() {
-
     const state = this.state
+
+    const messages = Object.keys(state.messages)
+        .map(key => (
+            <Message
+                key={ key }
+                message={ state.messages[key].message }
+                pseudo={ state.messages[key].pseudo }
+            />
+        ))
+
     return (
         <div className='box'>
             <div>
-                <div className="messages">
-                    <Message />
+                <div className='messages'>
+                    <div className='message'>
+                        { messages }
+                    </div>
                 </div>
                 <Formulaire
                     addMessage={ this.addMessage }
