@@ -5,10 +5,19 @@ import Formulaire from "./components/Formulaire";
 import Message from "./components/Message";
 import './App.css'
 
+// Firebase
+import base from "./base"
+
 class App extends Component {
     state = {
         messages: {},
         pseudo: this.props.match.params.pseudo
+    }
+    componentDidMount() {
+        base.syncState('/', {
+            context: this,
+            state: 'messages',
+        })
     }
 
     addMessage = (message) => {
